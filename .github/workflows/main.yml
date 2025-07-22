@@ -38,7 +38,7 @@ jobs:
       run: pyinstaller --clean integrated_tool.spec
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Supplier_Reconciliation_Tools
         path: dist/Supplier_Reconciliation_Tools.exe
