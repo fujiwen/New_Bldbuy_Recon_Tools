@@ -19,9 +19,12 @@ jobs:
         python-version: '3.9'
 
     - name: Install MinGW-w64
-      uses: egor-tensin/setup-mingw@v2
-      with:
-        platform: x64
+      shell: pwsh
+      run: |
+        $mingwPath = "C:\mingw64"
+        Invoke-WebRequest -Uri "https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev0/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev0.7z" -OutFile "mingw64.7z"
+        7z x mingw64.7z -o"C:\" -y
+        echo "$mingwPath\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
 
     - name: Install dependencies
       run: |
